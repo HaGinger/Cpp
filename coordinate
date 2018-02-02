@@ -1,0 +1,35 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+class coord//同一半球且不跨本初子午线
+{
+	double a;//赤道半径
+	double b;//极半径
+    double lng;//经度
+    double lat;//纬度
+    
+    public:
+	coord(double x,double y);
+	~coord();
+    double distance(coord des);
+};
+
+coord::coord(double x,double y)//初始化经纬度
+{
+	lat=x;
+	lng=y;
+	a=6378137;//赤道半径
+	b=6356752;//极半径
+}
+
+coord::~coord(){}
+
+double coord::distance(coord des)//根据经纬度计算两点间距离
+{
+	double pi=3.1415926535898；
+	double rad_1=lat*pi/180;
+	double rad_2=des.lat*pi/180;
+	double rad_3=abs(lng-des.lng)*pi/180;//转化为弧度制
+	
+}
