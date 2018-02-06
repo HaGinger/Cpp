@@ -11,6 +11,6 @@ class coord//同一半球且不跨本初子午线
 public:
 	coord(double x,double y);
 	~coord();
-    double distance(coord des);
+	double distance(coord des);
 	int neibor(set<coord>s,double rr);
 };
