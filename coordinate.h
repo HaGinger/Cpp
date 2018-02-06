@@ -12,5 +12,5 @@ public:
 	coord(double x,double y);
 	~coord();
 	double distance(coord des);
-	int neibor(set<coord>s,double rr);
+	int neibor(coord x,double rr,sset<coord>s);
 };
