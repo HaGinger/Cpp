@@ -13,11 +13,11 @@ using namespace std;
 template<typename T>
 class Matrix
 {
-    T *_head;//µÚÒ»¸öÔªËØµÄµØÖ·
-    int _row;//ĞĞÊı
-    int _colm;//ÁĞÊı
+    T *_head;//ç¬¬ä¸€ä¸ªå…ƒç´ çš„åœ°å€
+    int _row;//è¡Œæ•°
+    int _colm;//åˆ—æ•°
 
-    void MakeEmpty();//ÖÃÎª¿Õ¾ØÕó
+    void MakeEmpty();//ç½®ä¸ºç©ºçŸ©é˜µ
     Matrix(int m,int n,T *a);
 
 public:
@@ -32,23 +32,23 @@ public:
     bool setrow(int m,Matrix<T> &a);
     bool setcolm(int n,Matrix<T> &b);
     bool change(int m,int n);
-    void trans();//×ªÖÃ
-    void top();//»¯ÎªÉÏÈı½ÇĞÎ¾ØÕó
-    void diag();//»¯Îª¶Ô½ÇĞÍ¾ØÕó
-    void inver();//Äæ¾ØÕó
-    void random(double a,double b);//Ëæ»úÉú³ÉÃ¿¸öÔªËØÔÚ(a,b)µÄ¾ØÕó
+    void trans();//è½¬ç½®
+    void top();//åŒ–ä¸ºä¸Šä¸‰è§’å½¢çŸ©é˜µ
+    void diag();//åŒ–ä¸ºå¯¹è§’å‹çŸ©é˜µ
+    void inver();//é€†çŸ©é˜µ
+    void random(double a,double b);//éšæœºç”Ÿæˆæ¯ä¸ªå…ƒç´ åœ¨(a,b)çš„çŸ©é˜µ
 
-    void MakeZero();//ÖÃÎª0¾ØÕó
+    void MakeZero();//ç½®ä¸º0çŸ©é˜µ
     void MakeOne();
 	void SetValue(const T &value);
 	void SetValue(Matrix<T> value);
 
     int row() const{return _row;}
     int colm() const{return _colm;}
-    int rank()const;//¾ØÕóµÄÖÈ
-    T det()const;//ĞĞÁĞÊ½µÄÖµ
+    int rank()const;//çŸ©é˜µçš„ç§©
+    T det()const;//è¡Œåˆ—å¼çš„å€¼
     T _2norm();
-    T maxele()const;//·µ»Ø×î´óÔªËØ¾ø¶ÔÖµ
+    T maxele()const;//è¿”å›æœ€å¤§å…ƒç´ ç»å¯¹å€¼
 
     T *operator[](int m)const;
     void operator=(const Matrix<T> &eql_B);
@@ -65,7 +65,6 @@ public:
     bool SVD(Matrix<T> &Sigma);
 
     void print();
-    void ex();
 
 };
 
@@ -251,7 +250,7 @@ void Matrix<T>::top()
     {
         count=k;
         temp[0]=*(_head+count*_colm+k);
-        while(count<_row-1 && temp[0]==0)//»ØÈ¥¿´¿´
+        while(count<_row-1 && temp[0]==0)//å›å»çœ‹çœ‹
         {
             ++count;
             temp[0]=*(_head+count*_colm+k);
@@ -291,13 +290,6 @@ void Matrix<T>::diag()
     this->trans();
     this->top();
     this->trans();
-}
-
-template<typename T>
-void Matrix<T>::ex()
-{
-
-
 }
 
 template<typename T>
@@ -611,29 +603,6 @@ bool Matrix<T>::CQRD(Matrix<T> &Q,Matrix<T> &R)
         return true;
     }
 }
-/*
-template<typename T>
-bool Matrix<T>::eigen(Matrix<T> &V,Matrix<T> &Ei)
-{
-
-}
-
-template<typename T>
-bool Matrix<T>::SVD(Matrix<T> &U,Matrix<T> &Sigma,Matrix<T> &V)
-{
-
-}
-
-template<typename T>
-bool Matrix<T>::SVD(Matrix<T> &Sigma)
-{
-
-}
-*/
-
-
-
-
 
 template<typename T>
 void Matrix<T>::print()
